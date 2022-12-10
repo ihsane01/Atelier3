@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://java.sun.com/jsf/html"  xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />     
+    <title>JSF JPA Crud Etudiant</title>
+      <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous"></link>
+    <style type="text/css">
+        .tableUpdated {
+        	width: 90% !important;
+        	margin: 17px 58px 0 !important;
+        }
+        .btnSpace {
+        	margin: 17px;
+        }     
+    </style>
+</h:head>
+<h:body>
+
+<nav class="navbar navbar-expand-lgnavbar navbar-dark bg-dark">
+
+  <a class="navbar-brand" href="#">Etudiant</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+<div class="container">
+    <center><h2><h:outputText value="Liste des etudiants"/></h2></center>
+    <h:form id="schoolForm">
+    
+    
+    <h:dataTable value="#{etudiantManagedBean.listerEtudiants()}" var="etudiant" border="1" style="width: 100%;" >
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="İd" />
+                        </f:facet>
+                <h:outputText value="#{etudiant.id_etudiant}" />                
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="NOM" />
+                        </f:facet>
+                <h:outputText value="#{etudiant.nom}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PRENOM" />
+                        </f:facet>
+                <h:outputText value="#{etudiant.prenom}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ADRESSE" />
+                        </f:facet>
+                <h:outputText value="#{etudiant.adresse}" />
+                    </h:column>
+ 					<h:column>
+                        <f:facet name="header">
+                            <h:outputText value="CNE" />
+                        </f:facet>
+                <h:outputText value="#{etudiant.cne}" />
+                    </h:column>
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="NIVEAU" />
+                        </f:facet>
+                <h:outputText value="#{etudiant.niveau}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="DELETE" />
+                            
+                        </f:facet>
+                     
+                        <h:commandButton value="DELETE" action="#{etudiantManagedBean.deleteEtudiant(etudiant)}"/>
+                     
+                    </h:column>
+                    
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="EDITE" />
+                        </f:facet>
+                
+                            <h:commandButton  id="update" value="UPDATE" action="#{etudiantManagedBean.editetudiant(etudiant)}"/>
+                  
+                    </h:column>
+                    
+                </h:dataTable>
+    
+    
+    
+    
+        
+        <center><h:commandButton action="AddEtudiant.xhtml" value="Ajouter Etudiant" styleClass="btn btn-success btnSpace" /></center>
+    </h:form>
+    </div>
+</h:body>
+</html>
